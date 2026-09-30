@@ -1,0 +1,668 @@
+/* ==========================================================
+   MINHA PLANTINHA — estilos
+   Paleta inspirada em um "diário de jardim": verde-folha,
+   amarelo-sol e papel claro. Fontes do sistema (sem internet).
+   ========================================================== */
+
+:root {
+  --verde-folha: #3c8c4a;
+  --verde-escuro: #2f6b3a;
+  --verde-suave: #eaf6ee;
+  --amarelo-sol: #f2a93c;
+  --amarelo-claro: #fff3d6;
+  --azul-agua: #4fa3c9;
+  --marrom-terra: #8b5e3c;
+  --dourado-conquista: #e0a52e;
+  --papel: #fffdf8;
+  --texto: #2d3a2d;
+  --texto-suave: #66766a;
+  --erro: #c0392b;
+  --sombra: rgba(47, 90, 54, 0.14);
+
+  --fonte-titulo: "Trebuchet MS", "Segoe UI", Verdana, sans-serif;
+  --fonte-texto: Verdana, "Segoe UI", Arial, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: var(--fonte-texto);
+  color: var(--texto);
+  padding: 24px 16px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+
+  /* Fundo com "manchas" suaves de folha, feito só com CSS */
+  background-color: var(--verde-suave);
+  background-image:
+    radial-gradient(circle at 12% 8%, rgba(60, 140, 74, 0.16) 0, transparent 40%),
+    radial-gradient(circle at 90% 15%, rgba(242, 169, 60, 0.18) 0, transparent 35%),
+    radial-gradient(circle at 85% 92%, rgba(60, 140, 74, 0.14) 0, transparent 40%);
+  background-attachment: fixed;
+}
+
+.container {
+  width: 100%;
+  max-width: 480px;
+  background: var(--papel);
+  border-radius: 24px;
+  padding: 30px 26px;
+  box-shadow: 0 14px 32px var(--sombra);
+  border: 1px solid #e4efe1;
+}
+
+.tela {
+  display: none;
+  animation: aparecer 0.35s ease;
+}
+
+.tela.ativa {
+  display: block;
+}
+
+@keyframes aparecer {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ---------- Logo em formato de "folha" orgânica ---------- */
+.logo {
+  width: 78px;
+  height: 78px;
+  margin: 0 auto 18px;
+  background: var(--verde-suave);
+  border: 2px solid #cfe8ce;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 38px;
+  border-radius: 42% 58% 61% 39% / 45% 41% 59% 55%;
+}
+
+h1, h2, h3 {
+  font-family: var(--fonte-titulo);
+  color: var(--verde-escuro);
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 6px;
+  font-size: 26px;
+}
+
+h2 {
+  text-align: center;
+  margin-top: 0;
+  font-size: 21px;
+}
+
+h3 {
+  margin-top: 24px;
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+.subtitulo {
+  text-align: center;
+  color: var(--texto-suave);
+  margin-bottom: 22px;
+  font-size: 14.5px;
+  line-height: 1.5;
+}
+
+/* ---------- Formulário ---------- */
+.formulario {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+label {
+  font-weight: bold;
+  font-size: 14px;
+  color: var(--verde-escuro);
+}
+
+input[type="email"],
+input[type="password"],
+input[type="text"] {
+  width: 100%;
+  padding: 13px 14px;
+  border: 2px solid #dbe9d7;
+  border-radius: 12px;
+  font-size: 15px;
+  font-family: var(--fonte-texto);
+  outline: none;
+  background: #fbfdfa;
+}
+
+input:focus {
+  border-color: var(--verde-folha);
+  background: white;
+}
+
+/* ---------- Botões ---------- */
+.botao,
+.botao-secundario,
+.botao-cuidado {
+  font-family: var(--fonte-titulo);
+}
+
+.botao,
+.botao-secundario {
+  width: 100%;
+  padding: 14px;
+  border-radius: 14px;
+  font-size: 15.5px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.12s ease, background 0.15s ease;
+  margin-top: 4px;
+}
+
+.botao {
+  border: none;
+  background: var(--verde-folha);
+  color: white;
+  box-shadow: 0 6px 14px rgba(60, 140, 74, 0.28);
+}
+
+.botao:hover {
+  background: var(--verde-escuro);
+}
+
+.botao:active {
+  transform: scale(0.98);
+}
+
+.botao-secundario {
+  background: white;
+  color: var(--verde-escuro);
+  border: 2px solid var(--verde-folha);
+}
+
+.botao-secundario:hover {
+  background: var(--verde-suave);
+}
+
+.erro {
+  min-height: 18px;
+  margin: 6px 0;
+  color: var(--erro);
+  font-size: 13.5px;
+  text-align: center;
+  font-weight: bold;
+}
+
+/* Dica educativa (ex.: reutilização do pote de Danone) */
+.dica {
+  margin: 12px 0 4px;
+  padding: 12px 14px;
+  background: var(--amarelo-claro);
+  border: 1px solid #f0d8a3;
+  border-radius: 12px;
+  font-size: 13.5px;
+  text-align: center;
+  color: #6b5223;
+}
+
+.escondido {
+  display: none !important;
+}
+
+/* ---------- Opções (semente / recipiente) ---------- */
+.opcoes {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.opcao {
+  display: grid;
+  grid-template-columns: 42px 1fr;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  border: 2px solid #e1ecdd;
+  border-radius: 16px;
+  cursor: pointer;
+  background: #fbfdfa;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.opcao:hover {
+  background: var(--verde-suave);
+  border-color: #a9d5a4;
+}
+
+.opcao:has(input:checked) {
+  border-color: var(--verde-folha);
+  background: var(--verde-suave);
+}
+
+.opcao input {
+  display: none;
+}
+
+.opcao > span {
+  font-size: 30px;
+  text-align: center;
+}
+
+.opcao strong {
+  font-size: 15.5px;
+  color: var(--verde-escuro);
+}
+
+.opcao small {
+  display: block;
+  margin-top: 3px;
+  color: var(--texto-suave);
+  font-size: 13px;
+}
+
+/* ---------- Cards genéricos ---------- */
+.card {
+  margin-top: 20px;
+  padding: 18px;
+  background: #f8fbf6;
+  border-radius: 18px;
+  border: 1px solid #e2eede;
+}
+
+.cuidado-explicacao {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 18px;
+}
+
+.cuidado-explicacao:last-child {
+  margin-bottom: 0;
+}
+
+.cuidado-explicacao > span {
+  font-size: 32px;
+}
+
+.cuidado-explicacao strong {
+  color: var(--verde-escuro);
+}
+
+.cuidado-explicacao p {
+  margin: 4px 0 0;
+  color: var(--texto-suave);
+  font-size: 13.5px;
+}
+
+.aviso {
+  text-align: center;
+  padding: 12px;
+  background: var(--amarelo-claro);
+  border-radius: 12px;
+  font-size: 13.5px;
+  margin-top: 20px;
+  color: #6b5223;
+}
+
+/* ---------- Planta ---------- */
+.planta {
+  text-align: center;
+  padding: 10px 0 6px;
+}
+
+.imagem-planta {
+  min-height: 120px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 84px;
+}
+
+.imagem-planta.cresceu {
+  animation: crescer 0.7s ease;
+}
+
+@keyframes crescer {
+  0%   { transform: scale(0.7); }
+  50%  { transform: scale(1.25); }
+  100% { transform: scale(1); }
+}
+
+.planta h2 {
+  margin: 8px 0 4px;
+}
+
+.planta p {
+  margin: 3px;
+  color: var(--texto-suave);
+  font-size: 13.5px;
+}
+
+.sequencia {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: var(--amarelo-claro);
+  padding: 13px;
+  border-radius: 14px;
+  margin: 14px 0;
+  color: #6b5223;
+}
+
+.fogo {
+  font-size: 24px;
+}
+
+.mensagem-dia {
+  color: var(--texto-suave);
+  text-align: center;
+  font-size: 13.5px;
+}
+
+.lista-cuidados {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 14px;
+}
+
+.cuidado {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 14px;
+  background: white;
+  border: 1px solid #e2eede;
+  border-radius: 14px;
+}
+
+.cuidado-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.icone-cuidado {
+  font-size: 28px;
+}
+
+.cuidado-info strong {
+  display: block;
+  color: var(--verde-escuro);
+  font-size: 14.5px;
+}
+
+.cuidado-info small {
+  display: block;
+  margin-top: 3px;
+  color: var(--texto-suave);
+  font-size: 12.5px;
+}
+
+.botao-cuidado {
+  border: none;
+  background: var(--verde-folha);
+  color: white;
+  border-radius: 10px;
+  padding: 10px 12px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 13.5px;
+  white-space: nowrap;
+}
+
+.botao-cuidado:hover {
+  background: var(--verde-escuro);
+}
+
+.botao-cuidado:disabled {
+  cursor: default;
+  opacity: 0.85;
+}
+
+.cuidado.concluido {
+  background: var(--verde-suave);
+  border-color: #a9d5a4;
+}
+
+.cuidado.concluido .botao-cuidado {
+  background: var(--verde-escuro);
+}
+
+.progresso-botao {
+  margin-top: 20px;
+}
+
+/* ---------- Tela de progresso ---------- */
+.progresso-planta {
+  text-align: center;
+  padding: 16px 0 4px;
+}
+
+.imagem-progresso {
+  min-height: 130px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 92px;
+}
+
+.progresso-planta h2 {
+  margin: 8px 0;
+}
+
+.barra-progresso {
+  width: 100%;
+  height: 18px;
+  background: #e6efe3;
+  border-radius: 20px;
+  overflow: hidden;
+  margin-top: 18px;
+  border: 1px solid #d7e6d2;
+}
+
+.barra-progresso-preenchida {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--verde-folha), #6bbf6f);
+  border-radius: 20px;
+  transition: width 0.6s ease;
+}
+
+.texto-porcentagem {
+  text-align: center;
+  font-size: 13px;
+  color: var(--texto-suave);
+  margin: 6px 0 0;
+  font-weight: bold;
+}
+
+.texto-progresso {
+  text-align: center;
+  color: var(--verde-escuro);
+  font-weight: bold;
+  margin-top: 12px;
+}
+
+.etapas {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 20px 0 4px;
+}
+
+.etapa {
+  display: grid;
+  grid-template-columns: 52px 1fr;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  border-radius: 14px;
+  background: #f2f5f1;
+  border: 1px solid transparent;
+  opacity: 0.6;
+  transition: opacity 0.2s ease, background 0.2s ease;
+}
+
+.etapa-emoji {
+  font-size: 26px;
+  text-align: center;
+}
+
+.etapa-texto strong {
+  display: block;
+  color: var(--verde-escuro);
+  font-size: 14px;
+}
+
+.etapa-texto small {
+  color: var(--texto-suave);
+  font-size: 12.5px;
+}
+
+.etapa.desbloqueada {
+  opacity: 1;
+  background: var(--verde-suave);
+  border-color: #b7d9b2;
+}
+
+.etapa.atual {
+  opacity: 1;
+  background: var(--amarelo-claro);
+  border-color: #f0d8a3;
+}
+
+.etapa.atual .etapa-texto small {
+  color: #9a6a10;
+  font-weight: bold;
+}
+
+/* ---------- Conquistas ---------- */
+.lista-conquistas {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.conquista-card {
+  display: grid;
+  grid-template-columns: 52px 1fr;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 16px;
+  border-radius: 16px;
+  background: #f2f5f1;
+  border: 1px solid transparent;
+  opacity: 0.55;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.conquista-card .conquista-emoji {
+  font-size: 30px;
+  text-align: center;
+}
+
+.conquista-card strong {
+  display: block;
+  color: var(--verde-escuro);
+  font-size: 14.5px;
+}
+
+.conquista-card small {
+  display: block;
+  margin-top: 3px;
+  color: var(--texto-suave);
+  font-size: 12.5px;
+}
+
+.conquista-card.desbloqueada {
+  opacity: 1;
+  background: var(--amarelo-claro);
+  border-color: var(--dourado-conquista);
+  box-shadow: 0 4px 12px rgba(224, 165, 46, 0.25);
+}
+
+.conquista-card.desbloqueada .conquista-emoji {
+  animation: brilhar 1.4s ease infinite;
+}
+
+@keyframes brilhar {
+  0%, 100% { transform: scale(1); }
+  50%      { transform: scale(1.15); }
+}
+
+/* ---------- Modal de mensagens ---------- */
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(45, 58, 45, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  z-index: 10;
+}
+
+.modal-conteudo {
+  background: var(--papel);
+  border-radius: 20px;
+  padding: 28px 24px;
+  max-width: 360px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.25);
+  animation: entrarModal 0.25s ease;
+}
+
+@keyframes entrarModal {
+  from { opacity: 0; transform: translateY(10px) scale(0.97); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.modal-emoji {
+  font-size: 46px;
+  margin-bottom: 8px;
+}
+
+.modal-conteudo h3 {
+  margin: 4px 0 10px;
+  font-size: 18px;
+}
+
+.modal-conteudo p {
+  color: var(--texto-suave);
+  font-size: 14px;
+  line-height: 1.5;
+  margin-bottom: 18px;
+}
+
+/* ---------- Responsividade ---------- */
+@media (max-width: 550px) {
+  body {
+    padding: 10px;
+  }
+
+  .container {
+    margin-top: 6px;
+    padding: 22px 18px;
+    border-radius: 20px;
+  }
+
+  .cuidado {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .botao-cuidado {
+    width: 100%;
+  }
+}
